@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.com">
+    <head th:replace="layout::head"></head>
+    <body>
+        <nav th:replace="layout::navigation" ></nav>
+        <h1 th:text="${title}">Users</h1>
+        <div class="container-fluid p-0">
+
+            <section class="resume-section p-3 p-lg-5 d-flex d-column" id="about">
+                <div class="my-auto">
+                    <h1 class="mb-0">WamuPay
+                        <span class="text-primary">Devs</span>
+                    </h1>
+                    <div class="subheading mb-5">Kasarani Area
+                        <a href="mailto:name@email.com">info@waupay.com</a>
+                    </div>
+                    <table class="table table-condense">
+                        <thead>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Phone</th>
+                            <th>Testosterone</th>
+                            <th>Actions</th>
+                        </thead>
+                        <tbody>
+                            <tr th:each="user : ${users}">
+                                <td th:text="${user.id}"></td>
+                                <td th:text="${user.name}"></td>
+                                <td th:text="${user.phone}"></td>
+                                <td th:text="${user.testosterone}"></td>
+                                <td>
+                                    <a th:href="@{'/users/' + ${user.id}}">
+                                        <i class="fa fa-eye" aria-hidden="true"></i>
+                                    </a>
+                                    <a th:href="@{'/users/edit/' + ${user.id}}">
+                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                    </a>
+                                    <a th:href="@{'/users/delete/' + ${user.id}}">
+                                        <i class="fa fa-trash" aria-hidden="true"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    </div>
+                </div>
+            </section>
+
+
+        </div>
+    </body>
+</html>
